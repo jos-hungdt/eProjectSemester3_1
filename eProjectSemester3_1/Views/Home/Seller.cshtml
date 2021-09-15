@@ -1,0 +1,65 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<eProjectSemester3_1.Application.Entities.MembershipUser>
+
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgt6x mrgb6x clearfix">
+            <h4 class="page-name">Seller List</h4>
+            <div class="tag-bar"> <a href="#"><span>see all our agents</span></a> </div>
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active"><a href="#">Seller list</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="agents-list">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 col-sm-4 mrgb10x animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="agent-profile" @*style="border: solid 1px #d9d7d7; padding-bottom:10px"*@>
+                    <div class="agent-img" style="background-image: url(@Html.DisplayFor(modelItem => item.Avatar));">
+
+
+                    </div>
+                    <div class="agent-detail">
+                        <div class="agent-name">
+                            <h5>@Html.DisplayFor(modelItem => item.FullName)</h5>
+                        </div>
+                        <ul class="agent-contact">
+                            <li><i class="fa fa-phone"></i></li>
+                            <li><span>Mobile</span></li>
+                            <li class="contact-info"><a href="#">@Html.DisplayFor(modelItem => item.Phone)</a></li>
+                        </ul>
+                        <ul class="agent-mail">
+                            <li><i class="icon-email4"></i></li>
+                            <li><span>E-mail</span></li>
+                            <li class="contact-info"><a href="#">@Html.DisplayFor(modelItem => item.Email)</a></li>
+                        </ul>
+                        <ul class="agent-mail">
+                            <li><i class="fas fa-location-arrow"></i></li>
+                            <li><span>Adress</span></li>
+                            <li class="contact-info"><a href="#">@Html.DisplayFor(modelItem => item.Address)</a></li>
+                        </ul>
+                        <div class="full-profile-btn" style="margin-top:7px;">@Html.ActionLink("Properties List","SellerEstate",new {id = Html.DisplayFor(modelItem => item.Id) },new { @class = "see-more" })  </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+
+    </div>
+</div>
+
+<div class="numbering mrgb3x" style="display:block;">
+    <ul class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Seller", new { page }))
+    </ul>
+</div>
+
+

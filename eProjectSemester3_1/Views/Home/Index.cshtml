@@ -1,0 +1,180 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<eProjectSemester3_1.Application.Entities.Estate>
+@Html.Partial("~/Views/include/mainslider.cshtml");
+
+@Html.Partial("~/Views/include/SearchHome.cshtml");
+
+<section>
+    <div class="container">
+        <div class="service-sec section-heading mrgt7x mrgb7x">
+            <h3><span>OUR SERVICES</span></h3>
+        </div>
+        <div class="services">
+            <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="facility-box mrgb6x">
+                    <div class="service-icon"><img src="~/Content/images/hotel-service-1.jpg" class="img-responsive" alt="#" /></div>
+                    <div class="service-text">
+                        <h4>All inclusive</h4>
+                        <span>Guaranteed Service</span>
+                        <p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="facility-box mrgb6x">
+                    <div class="service-icon"><img src="~/Content/images/hotel-service-5.jpg" class="img-responsive" alt="#" /></div>
+                    <div class="service-text">
+                        <h4>All you can eat restaurant</h4>
+                        <span>Guaranteed Service</span>
+                        <p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="facility-box mrgb6x">
+                    <div class="service-icon"><img src="~/Content/images/hotel-service-3.jpg" class="img-responsive" alt="#" /></div>
+                    <div class="service-text">
+                        <h4>Garage Inclusive</h4>
+                        <span>Guaranteed Service</span>
+                        <p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="parallex">
+    <div class="container">
+        <div class="stat-counter mrgt9x mrgb9x clearfix">
+            <div class="col-md-3 col-sm-6">
+                <div class="stat-box">
+                    <i class="fa fa-location-arrow"></i> <span class="countUp">3123</span>
+                    <h4>Happy Customers</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stat-box">
+                    <i class="fa fa-map-marker"></i> <span class="countUp">2467</span>
+                    <h4>Booking</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stat-box">
+                    <i class="fa fa-star"></i> <span class="countUp">1098</span>
+                    <h4>Rent Out</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stat-box">
+                    <i class="fa fa-check"></i> <span class="countUp">100</span>
+                    <h4>Reliable</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="featured-properties mrgb6x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="section-heading mrgt7x mrgb7x">
+                <h3><span>VIP ESTATE</span></h3>
+            </div>
+            <div class="section-detail">
+
+                @foreach (var it in eProjectSemester3_1.Application.AppHelpers.vip_estate())
+                {
+                    <div class="col-md-4 col-sm-6">
+                        <div class="home2 property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+                            <div class="appartment-img">
+                                <img src="@it.realEstateImage"  class="img-responsive" alt="#" />
+                                <div class="room-price"><span>$@it.Price</span></div>
+                                <div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
+                            </div>
+                            <div class="property-text">
+                                <div class="resort-name">
+                                    <h4>@it.realEstateTitle</h4>
+                                    <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                    <p>@it.Teaser </p>
+                                </div>
+                                <div class="detail-btn mrgt4x mrgb3x"> <a href="@Url.Action("Index", "Estate", new {id=it.RealEstateID })" class="more-detail"><i class="fa fa-angle-right"></i>MORE DETAILS</a></div>
+                            </div>
+                            <ul class="home2 appartment-detail">
+                                <li>@it.NoOfBedrooms Beds</li>
+                                <li>@it.NoOfBathrooms Baths</li>
+                                <li><i class="fas fa-location-arrow"></i> @it.Orientation</li>
+                                <li><i class="fas fa-map-marker-alt"></i> @it.Street , @it.City</li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="mrgt6x">
+        <div class="container">
+            <div class="properties-listing animated out" data-delay="0" data-animation="fadeInUp">
+                <ul class="listing-name mrgb4x">
+                    <li class="filter" data-filter="all"><a href="javascript:;">All</a></li>
+                    <li class="filter" data-filter="Sale"><a href="javascript:;">For Sale</a></li>
+                    <li class="filter" data-filter="Rent"><a href="javascript:;">For Rent</a></li>
+                </ul>
+                <ul class="filter-list">
+                    @foreach (var item in Model)
+                    {
+                        var label = "Sale";
+                        if (item.EstateType.realStateTypeID == 2)
+                        { label = "Rent"; }
+                        // Phân loại label tìm kiếm là dạng thuê hay bán
+                        <li class="mix @label col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
+                            <div class="property-detail">
+                                <div class="property-image">
+
+                                    <img src="@Html.DisplayFor(modelItem => item.realEstateImage)" class="img-responsive" alt="#" />
+                                    <div class="zoom-img"> <a href="images/listingimg-1.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-2.jpg"></a> <a href="images/listingimg-3.jpg"></a> </div>
+                                </div>
+                                <ul class="clearfix">
+                                    <li>
+                                        <h4>@Html.DisplayFor(modelItem => item.realEstateTitle)</h4>
+                                    </li>
+                                    <li>
+                                        <span>
+                                            @Html.DisplayFor(modelItem => item.City),
+                                        @Html.DisplayFor(modelItem => item.Street)
+                                    </span>
+                                </li>
+                                <li class="property-price"><span><sup>$</sup>@Html.DisplayFor(modelItem => item.Price)</span></li>
+                                <li>@Html.ActionLink("DETAILS", "Index", "Estate", new { id = item.RealEstateID }, new { @class = "detail", @style = "color:white;" })</li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+                </ul>
+            </div>
+        </div>
+    </section>
+    <center>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</center>
+
+
+    <section class="bg-dark parallex mrgb4x">
+        <div class="container">
+            <div class="inner-text">
+                <h2>FIND BEST PLACE FOR LIVING</h2>
+                <span> </span>
+                <p>Spend vacations in best hotels and resorts</p>
+                <p>find the great place of your choice using different searching options.</p>
+            </div>
+        </div>
+    </section>
+
+
+<script>
+        function empty() {
+            var x = $('#search-box').val();
+            if (x == "" || x == null) {
+                return false;
+            }
+        }
+</script>

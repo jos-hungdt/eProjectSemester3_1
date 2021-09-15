@@ -1,0 +1,127 @@
+﻿
+@using (Html.BeginForm("Search", "Home", FormMethod.Get, new { role = "search", id = "property-search" }))
+{
+    <div class="top-tabs">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#forsale" aria-expanded="true"><i class="icon-home10"></i>PROPERTIES SEARCH</a></li>
+                @*<li><a data-toggle="tab" href="#rent" aria-expanded="true"><i class="icon-aircraft"></i>Rent</a></li>*@
+            </ul>
+            <div class="tab-content clearfix">
+                <div id="forsale" class="tab-pane fade in active">
+                    @*<input type="hidden" name="salerent" value="1" />*@
+                    <div class="search-options">
+                        <div class="search-form">
+                            <form id="property-search" name="propertysearch" method="post">
+                                <div class="form-inner">
+                                    <div class="left-options col-md-6">
+                                        <div class="form-section col-md-6">
+                                            <label>Property Name</label>
+                                            <input name="q" class="form-control" placeholder="ANY">
+                                        </div>
+
+                                        <div class="form-section col-md-6">
+                                            <label>Property Location</label>
+                                            <input name="location" class="form-control" type="text">
+                                        </div>
+                                        <div class="form-section col-md-6">
+                                            <label>Number of Bed Rooms</label>
+                                            <input type="number" min="1" name="bedroom" class="form-control" placeholder="1">
+                                        </div>
+                                        <div class="form-section col-md-6">
+                                            <label>Number of Bath Rooms</label>
+                                            <input type="number" min="1" name="bathroom" class="form-control" placeholder="1">
+                                        </div>
+                                    </div>
+                                    <div class="right-options col-md-6">
+                                        <div class="form-section col-md-6">
+                                            <label>Property Area From</label>
+                                            <input type="number" name="areafrom" class="form-control" placeholder="m2" />
+                                        </div>
+                                        <div class="form-section col-md-6">
+                                            <label>Property Area To</label>
+                                            <input type="number" name="areato" class="form-control" placeholder="m2" />
+                                        </div>
+                                        <div class="form-section col-md-6">
+                                            <label>Property Style</label>
+                                            <div class="select-box">
+                                                <select class="form-control" name="style">
+                                                    @foreach (var st in AppHelpers.GetEstateStyle())
+                                                    {
+                                                        <option value="@st.realEstateStyleID">@st.realEstateStyleName</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-section col-md-6">
+                                            <div class="search-btn"><button class="search-btn" type="submit">SEARCH FOR IT</button> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+               
+                    @*<div id="rent" class="tab-pane fade">
+                        <input type="hidden" name="salerent" value="2" />
+                        <div class="search-options">
+                            <div class="search-form">
+                                <form id="property-search" name="propertysearch" method="post">
+                                    <div class="form-inner">
+                                        <div class="left-options col-md-6">
+                                            <div class="form-section col-md-6">
+                                                <label>Property Name</label>
+                                                <input name="q" class="form-control" placeholder="ANY">
+                                            </div>
+
+                                            <div class="form-section col-md-6">
+                                                <label>Property Location</label>
+                                                <input name="location" class="form-control" type="text">
+                                            </div>
+                                            <div class="form-section col-md-6">
+                                                <label>Number of Bed Rooms</label>
+                                                <input type="number" name="bedroom" class="form-control" placeholder="1">
+                                            </div>
+                                            <div class="form-section col-md-6">
+                                                <label>Number of Bath Rooms</label>
+                                                <input type="number" name="bathroom" class="form-control" placeholder="1">
+                                            </div>
+                                        </div>
+                                        <div class="right-options col-md-6">
+                                            <div class="form-section col-md-6">
+                                                <label>Property Area From</label>
+                                                <input type="number" name="areafrom" class="form-control" placeholder="m2" />
+                                            </div>
+                                            <div class="form-section col-md-6">
+                                                <label>Property Area To</label>
+                                                <input type="number" name="areato" class="form-control" placeholder="m2" />
+                                            </div>
+                                            <div class="form-section col-md-6">
+                                                <label>Property Style</label>
+                                                <div class="select-box">
+                                                    <select class="form-control" name="style">
+                                                        @foreach (var st in AppHelpers.GetEstateStyle())
+                                                        {
+                                                            <option value="@st.realEstateStyleID">@st.realEstateStyleName</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-section col-md-6">
+                                                <div class="search-btn"><button class="search-btn" type="submit">SEARCH FOR IT</button> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>*@
+                
+            </div>
+        </div>
+    </div>
+}

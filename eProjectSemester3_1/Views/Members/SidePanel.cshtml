@@ -1,0 +1,36 @@
+﻿@model eProjectSemester3_1.Application.Entities.MembershipUser
+    <style>
+        .dropdown .dropdown-menu{
+            display:none;
+        }
+
+        .open .dropdown-menu, .dropdown:hover .dropdown-menu {
+            display: block;
+            margin:0px;
+        }
+    </style>
+    <li class="dropdown">
+        <a href="@Url.Action("Index","Members")">
+            <i class="fas fa-user"></i>
+            <span>
+                @User.Identity.Name
+            </span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            @if (AppHelpers.IsRole(AppConstants.AdminRoleName))
+            {
+                <li>@Html.ActionLink("Admin Manager", "Index", "Dashboard", new { area = "Admin" }, new { })</li>
+            }
+            @if (AppHelpers.IsRole(AppConstants.ShoppingRoleName))
+            {
+                <li>@Html.ActionLink("Estate Manager", "Index", "ShopInfo", new { area = "Shop" }, new { })</li>
+            }
+            else
+            {
+                <li>@Html.ActionLink("Shop Register", "RegisterShop", "Members")</li>
+            }
+            <li>@Html.ActionLink("Change Pass", "ChangePass", "Members")</li>
+            <li>@Html.ActionLink("Change info", "ChangeInfo", "Members")</li>
+            <li>@Html.ActionLink("LogOut", "LogOut", "Members")</li>
+        </ul>
+    </li>

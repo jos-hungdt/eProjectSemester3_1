@@ -1,0 +1,55 @@
+﻿@model eProjectSemester3_1.Areas.Shop.ViewModels.ShopEstateViewModel
+@{
+    ViewBag.Title = "Manage Estate";
+}
+@Html.Partial("_EstateNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:30px">No</th>
+                            <th style="width:50px">Edit</th>
+                            <th>Title</th>
+                            <th style="width:100px">Style</th>
+                            <th style="width:50px">Status</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    @{ int i = 1;}
+
+                    <tbody>
+                        @foreach (var it in Model.ListEstate)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>
+                                    <a href="@Url.Action("Edit", new { id = it.RealEstateID })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </td>
+                                <td>@it.realEstateTitle</td>
+                                <td>@it.EstateStyle.realEstateStyleName</td>
+                                <td>@(it.EstateStatus.ToString().Replace("0", "Non-Activated").Replace("1", "Activated"))</td>
+
+                                <td>
+                                    <a href="@Url.Action("Delete", new { id = it.RealEstateID,p=Model.Paging.Page })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @Html.Partial("_Paging", Model.Paging)
+        </div>
+    </div>
+</div>
+

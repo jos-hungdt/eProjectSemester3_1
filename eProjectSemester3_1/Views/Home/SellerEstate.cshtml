@@ -1,0 +1,69 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Estate>
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb5x mrgt6x clearfix">
+            <h4 class="page-name">properties list of seller @Model.FirstOrDefault().User.FullName</h4>
+            <div class="tag-bar"> <a href="#"><span>searching properties</span></a> </div>
+            <ul class="breadcrumb">
+                <li><a href="#">Pages</a></li>
+                <li class="active"><a href="#">Properties list</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="property-filter clearfix">
+
+            <div class="row">
+                <ul class="filter-list clearfix">
+                    @foreach (var item in Model)
+                    {
+                        string tag = "sale";
+                        if (item.realEstateTypeID == 1)
+                        {
+                            tag = "sale";
+                        }
+                        else
+                        {
+                            tag = "rent";
+                        }
+                        <li class="mix @tag col-md-3 col-sm-4 mrgb5x" data-price="5">
+                            <div class="property-box animated out" data-delay="0" data-animation="fadeInUp">
+                                <div class="appartment-img">
+                                    <img src="@item.realEstateImage" class="img-responsive" alt="#" />
+                                    <div class="detail-btn">
+                                        @if (item.realEstateTypeID == 1)
+                                        {<a href="#" class="sale">FOR SALE</a>}
+                                        else
+                                        {<a href="#" class="rent">FOR RENT</a>}
+                                    </div>
+                                </div>
+                                <div class="property-text">
+                                    <div class="appartment-name">
+                                        <h4>@Html.DisplayFor(modelItem => item.realEstateTitle)</h4>
+                                        <p>@Html.DisplayFor(modelItem => item.Teaser)</p>
+                                    </div>
+                                    <div class="property-price">
+                                        <h1><span><sup>$</sup>@Html.DisplayFor(modelItem => item.Price)</span></h1>
+                                    </div>
+                                    <ul class="appartment-detail">
+                                        <li>@Html.DisplayFor(modelItem => item.NoOfBathrooms) Baths</li>
+                                        <li>@Html.DisplayFor(modelItem => item.NoOfBedrooms) Beds</li>
+                                        <li>@Html.DisplayFor(modelItem => item.Area) m<sup>2</sup></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+                <div class="numbering">
+                    @Html.PagedListPager(Model, page => Url.Action("SellerEstate", new { page }))
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

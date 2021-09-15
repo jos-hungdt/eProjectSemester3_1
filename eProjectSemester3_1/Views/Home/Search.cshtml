@@ -1,0 +1,46 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Estate>
+<section class="mrgt6x">
+    <div class="container">
+        <div class="properties-listing animated out" data-delay="0" data-animation="fadeInUp">
+            <ul class="listing-name mrgb4x">
+                <li class="filter" data-filter="all"><a href="javascript:;">All</a></li>
+                <li class="filter" data-filter="Sale"><a href="javascript:;">For Sale</a></li>
+                <li class="filter" data-filter="Rent"><a href="javascript:;">For Rent</a></li>
+            </ul>
+            <ul class="filter-list">
+                @foreach (var item in Model)
+                {
+                    var label = "Sale";
+                    if (item.realEstateTypeID == 2)
+                    { label = "Rent"; }
+                    // Phân loại label tìm kiếm là dạng thuê hay bán
+                    <li class="mix @label col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="property-detail">
+                            <div class="property-image">
+
+                                <img src="@Html.DisplayFor(modelItem => item.realEstateImage)" class=" img-responsive" alt="#" />
+                                <div class="zoom-img"> <a href="images/listingimg-1.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-2.jpg"></a> <a href="images/listingimg-3.jpg"></a> </div>
+                            </div>
+                            <ul class="clearfix">
+                                <li>
+                                    <h4>@Html.DisplayFor(modelItem => item.realEstateTitle)</h4>
+                                </li>
+                                <li>
+                                    <span>
+                                        @Html.DisplayFor(modelItem => item.City),
+                                        @Html.DisplayFor(modelItem => item.Street)
+                                    </span>
+                                </li>
+                                <li class="property-price"><span><sup>$</sup>@Html.DisplayFor(modelItem => item.Price)</span></li>
+                                <li>@Html.ActionLink("Details", "Index", "Estate", new { id = item.RealEstateID }, new { @class = "detail", @style = "color:white;" })</li>
+                            </ul>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+    <center>@Html.PagedListPager(Model, page => Url.Action("Search", new { page }))</center>
+
+</section>

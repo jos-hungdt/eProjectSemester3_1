@@ -1,0 +1,95 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<eProjectSemester3_1.Application.Entities.Faqs>
+
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb6x mrgt6x clearfix">
+            <h4 class="page-name">FREQUENTLY ASKED QUESTIONS</h4>
+            <div class="tag-bar"> <a href="#"><span>what you should know</span></a> </div>
+            <ul class="breadcrumb">
+                <li><a href="#">Pages</a></li>
+                <li class="active"><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="faq">
+                <div class="col-md-9">
+                    <div class="panel-group" id="accordion">
+                        @{ int count = 1;
+          }
+        @foreach (var i in Model)
+
+        {
+            string col = "collapse" + count;
+
+            <div class="panel panel-default animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#@col" aria-expanded="true">
+                            <span>@count</span>@i.question
+                        </a>
+                    </h4>
+                </div>
+                <div id="@col" class="panel-collapse collapse in">
+                    <div class="panel-body">@i.answer </div>
+
+                </div>
+            </div>
+
+            count++;
+        }
+
+                        <div class="panel panel-default animated out" data-delay="0" data-animation="fadeInUp">
+                            <div class="panel-heading">
+                                <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true"> <span>01</span> How to book a vacation online?</a> </h4>
+                            </div>
+                            <div id="collapse3" class="panel-collapse collapse in">
+                                <div class="panel-body">We work with clients big and small across a range of sectors and we utilise all forms of media to get your name out there in a way that’s right for you. We believe that analysis of your company and your customers is key in responding effectively to your promotional needs and we will work with you to fully understand your business to achieve the greatest amount of publicity possible so that you can see a return from the advertising. </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="right-side-bar mrgb5x">
+                    <div class="search-for animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="rightbar-heading mrgb3x">
+                            <h4>SEARCH</h4>
+                        </div>
+                        <div class="widget search">
+                            @using (Html.BeginForm("NewsSearch", "Home", FormMethod.Get, new { role = "search", id = "news-search" }))
+                            {
+                                <form method="post" action="#">
+                                    <input type="text" class="form-control" name="n" placeholder="search for something">
+                                    <input type="submit" value="submit">
+                                </form>
+                            }
+                        </div>
+                    </div>
+                    <div class="blog-post mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="rightbar-heading mrgb3x">
+                            <h4>News</h4>
+                        </div>
+                        @foreach (var i in AppHelpers.GetNews())
+                        {
+                            
+                                <div class="post-area">
+                                    <h5><a href="@Url.Action("Show","News",new { id=i.Id })">@i.Title</h5>
+                                    <span class="best-place">POSTED ON @i.CreateDate</span>
+                                </div>
+                            
+
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

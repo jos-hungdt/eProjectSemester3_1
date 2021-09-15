@@ -1,0 +1,117 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<News>
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb6x mrgt6x clearfix">
+            <h4 class="page-name">NEWS SEARCH RESULT</h4>
+            <div class="tag-bar">  </div>
+            <ul class="breadcrumb">
+                <li><a href="#">Pages</a></li>
+                <li class="active">RESULT FOR @ViewBag.Keyword</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="latest-news animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="col-md-9 mrgb3x">
+                   
+                    <div class="section-detail">
+                        @foreach (var i in Model)
+                        {
+                            <div class="blog clearfix">
+                                <div class="blog-img" style="background-image: url(@i.Image));"><img src="@i.Image" width="137" height="137"/></div>
+                                <div class="blog-text">
+                                    <h4>@i.Title </h4>
+                                    <ul class="time">
+                                        <li><a href="#"><i class="icon-access-time"></i>@i.CreateDate</a></li>
+                                        <li><i class="icon-user13"></i>@i.UserPost.FullName</li>
+                                    </ul>
+                                    <p>@i.ShortContent</p>
+                                    <a href="@Url.Action("Show","News",new { id = i.Id })" class="more-btn"><span>MORE</span></a>
+                                </div>
+                            </div>
+                        }
+                        @*<div class="blog">
+                                <div class="blog-img"><img src="images/blogimg-2.jpg" class="img-responsive" alt="#" /></div>
+                                <div class="blog-text">
+                                    <h4>What about your next vaction?</h4>
+                                    <ul class="time">
+                                        <li><a href="#"><i class="icon-access-time"></i>28 Aprli, 2014</a></li>
+                                        <li><a href="#"><i class="icon-user13"></i>Jackson Matins</a></li>
+                                    </ul>
+                                    <p>Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss ...</p>
+                                    <a href="#" class="more-btn"><span>MORE</span></a>
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="right-side-bar mrgb5x">
+                    <div class="search-for animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="rightbar-heading mrgb3x">
+                            <h4>SEARCH</h4>
+                        </div>
+                        <div class="widget search">
+                            @using (Html.BeginForm("NewsSearch", "Home", FormMethod.Get, new { role = "search", id = "news-search" }))
+                            {
+                                <form method="post" action="#">
+                                    <input type="text" class="form-control" name="n" placeholder="search for something">
+                                    <input type="submit" value="submit">
+                                </form>
+                            }
+                        </div>
+                    </div>
+                    <div class="blog-post mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="rightbar-heading mrgb3x">
+                            <h4>News</h4>
+                        </div>
+                        @foreach (var i in AppHelpers.GetNews())
+                        {
+
+                            <div class="post-area">
+                                <h5><a href="@Url.Action("Show","News",new { id=i.Id })">@i.Title</a></h5>
+                                <span class="best-place">POSTED ON @i.CreateDate</span>
+                            </div>
+
+
+                        }
+                    </div>
+                    <div class="rightbar-heading mrgb3x">
+                        <h4>HOT PROPERTIES</h4>
+                    </div>
+
+                    @foreach (var i in AppHelpers.vip_estate().Take(5))
+                    {
+                        var label = "Sale";
+                        if (i.realEstateTypeID == 2)
+                        { label = "Rent"; }
+                        // Phân loại label search is rent or sale
+                        <div class="property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+                            <div class="appartment-img">
+                                <img src="@i.realEstateImage" class="img-responsive" alt="#" />
+                                <div class="detail-btn"> <a href="#" class="@label">FOR @label</a> </div>
+                            </div>
+                            <div class="property-text">
+                                <div class="appartment-name">
+                                    <h4><a href="@Url.Action("Index", "Estate", new {id = i.RealEstateID})">@i.realEstateTitle</a></h4>
+                                    <p>@i.Teaser </p>
+                                </div>
+                                <div class="property-price">
+                                    <h1><span><sup>$</sup>@i.Price</span></h1>
+                                </div>
+                                <ul class="appartment-detail">
+                                    <li>@i.NoOfBathrooms Baths</li>
+                                    <li>@i.NoOfBedrooms Beds</li>
+                                    <li>@i.Area</li>
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,71 @@
+﻿<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb4x mrgt6x clearfix">
+            <h4 class="page-name">CONTACT US</h4>
+            <div class="tag-bar"> <a href="#"><span>just get in touch</span></a> </div>
+            <ul class="breadcrumb">
+                <li><a href="#">Pages</a></li>
+                <li class="active"><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="contact-us animated out" data-delay="0" data-animation="fadeInUp">
+                    <div class="contact-guide col-md-10 no-padding mrgb3x">
+                        <p>Fill out all required fields to send a message. You have to login to your wordpress account to post any comment. Please don´t spam, thank you!</p>
+                    </div>
+                    <div class="post-form row">
+                        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+                        
+                        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { role = "search", id = "contact" }))
+                        {
+
+                            <form id="review-form" method="post" name="postreview">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>NAME</label>
+                                        <input name="name" class="form-control" placeholder="enter a name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>EMAIL</label>
+                                        <input name="email" class="form-control" placeholder="enter a email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        <input name="phone" class="form-control" placeholder="enter a subject">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>MESSAGE</label>
+                                        <textarea name="message" class="form-control" placeholder="type in a message" rows="11"></textarea>
+                                    </div>
+                                    <div> <button type="submit" class="send-msg" style="color:white;">SEND MESSAGE</button>@*<i class="fa fa-angle-right"></i>*@</div>
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="contact-info-rightbar animated out" data-delay="0" data-animation="fadeInUp">
+                    <div class="rightbar-heading">
+                        <h4>CONTACT INFORMATION</h4>
+                    </div>
+                  
+                    <ul class="contact-address clearfix">
+                        <li class="map-marker"><i class="icon-location10"></i><span>@AppHelpers.GetSetting("Address")</span></li>
+                        <li class="globe"> <i class="icon-earth"></i><span>http://www.nghean-aptech.com</span></li>
+                        <li class="phone"> <i class="fa fa-phone"></i><span>+@AppHelpers.GetSetting("Hotline")</span></li>
+                        <li class="mail-envel"><i class="icon-email4"></i><span>@AppHelpers.GetSetting("Email")</span></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

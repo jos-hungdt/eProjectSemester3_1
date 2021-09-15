@@ -1,0 +1,149 @@
+﻿@model eProjectSemester3_1.Areas.Shop.ViewModels.ShopEstateEditViewModel
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<div class="form-group">
+    @Html.LabelFor(model => model.realEstateTitle)
+    @Html.EditorFor(model => model.realEstateTitle, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.realEstateTitle, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.City)
+    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Street)
+    @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.NoOfBedrooms)
+    @Html.EditorFor(model => model.NoOfBedrooms, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.NoOfBedrooms, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.NoOfBathrooms)
+    @Html.EditorFor(model => model.NoOfBathrooms, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.NoOfBathrooms, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.GardenArea)
+    @Html.EditorFor(model => model.GardenArea, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.GardenArea, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Orientation)
+    @Html.EditorFor(model => model.Orientation, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Orientation, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.ExtraFacilitiesAvailable)
+    @Html.EditorFor(model => model.ExtraFacilitiesAvailable, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ExtraFacilitiesAvailable, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.ModesOfTransport)
+    @Html.EditorFor(model => model.ModesOfTransport, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ModesOfTransport, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.WithFurniture)
+    @Html.EditorFor(model => model.WithFurniture, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.WithFurniture, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.ModeOfPayment)
+    @Html.EditorFor(model => model.ModeOfPayment, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.ModeOfPayment, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Deposit)
+    @Html.EditorFor(model => model.Deposit, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Deposit, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Negotiable)
+    @Html.EditorFor(model => model.Negotiable, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Negotiable, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+</div>
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.realEstateStatus)
+    @Html.EditorFor(model => model.realEstateStatus, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.realEstateStatus, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EstateStatus)
+    @Html.EditorFor(model => model.EstateStatus, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.EstateStatus, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Price)
+    @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.Area)
+    @Html.EditorFor(model => model.Area, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Area, "", new { @class = "text-danger" })
+    <script>
+        CKEDITOR.replace("Area"); // trường này sẽ được chuyển thành ck edit xem cái nào cần thì bỏ thêm đoạn này vao là được
+    </script>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.realEstateImage)
+    @Html.EditorFor(model => model.realEstateImage, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.realEstateImage, "", new { @class = "text-danger" })
+    <script>
+        FileManage.replace("realEstateImage", { Muti: true });
+    </script>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Teaser)
+    @Html.EditorFor(model => model.Teaser, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Teaser, "", new { @class = "text-danger" })
+</div>
+@{
+    if (AppHelpers.IsRole(AppConstants.AdminRoleName))
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostEstateType)
+            @Html.DropDownListFor(model => model.PostEstateType, Model.AllPostEstateType, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PostEstateType, "", new { @class = "text-danger" })
+        </div>
+    }
+}
+
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EstateStyle)
+    @Html.DropDownListFor(model => model.EstateStyle, Model.AllEstateStyle, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.EstateStyle, "", new { @class = "text-danger" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EstateType)
+    @Html.DropDownListFor(model => model.EstateType, Model.AllEstateType, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.EstateType, "", new { @class = "text-danger" })
+</div>

@@ -1,0 +1,48 @@
+﻿
+<!------ Include the above in your HEAD tag ---------->
+@*<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Log in
+</button>*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form role="form" action="@Url.Action("Login","Members")" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" value="@Request.Path" name="ReturnUrl"/>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Log in</h4>
+                </div> <!-- /.modal-header -->
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" name="UserName" class="form-control" id="uLogin" placeholder="Login">
+                            <label for="uLogin" class="input-group-addon glyphicon glyphicon-user"></label>
+                        </div>
+                    </div> <!-- /.form-group -->
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="password" name="Password" class="form-control" id="uPassword" placeholder="Password">
+                            <label for="uPassword" class="input-group-addon glyphicon glyphicon-lock"></label>
+                        </div> <!-- /.input-group -->
+                    </div> <!-- /.form-group -->
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="RememberMe" value="true"> Remember me
+                        </label>
+                    </div> <!-- /.checkbox -->
+
+                </div> <!-- /.modal-body -->
+                <div class="modal-footer">
+                    <button class="form-control btn btn-primary">Ok</button>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="100" style="width: 0%;">
+                            <span class="sr-only">progress</span>
+                        </div>
+                    </div>
+                </div> <!-- /.modal-footer -->
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

@@ -1,0 +1,50 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminNewsListViewModel
+@{
+    ViewBag.Title = "Manage News";
+}
+
+@Html.Partial("_MewsNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>Title</th>
+                            <th style="width:150px">User Post</th>
+                            <th style="width:150px">Create Date</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListNews)
+                        {
+                        <tr>
+                            <td>
+                                <a href="@Url.Action("Edit", new { id = it.Id })" class="btn-mvc">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </a>
+                            </td>
+                            <td>@it.Title</td>
+                            <td>@it.UserPost.UserName</td>
+                            <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
+                            <td>
+                                <a href="@Url.Action("Delete", new { id = it.Id })" class="btn-mvc">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

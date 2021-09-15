@@ -1,0 +1,26 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminMembersDeleteViewModel
+@{
+    ViewBag.Title = "Change info account";
+}
+@Html.Partial("_MembersNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <h3 style="color:red">Are you sure wanna delete this user? If you sure click DELETE button</h3>
+        @using (Html.BeginForm("Delete", "AdminMembers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+
+
+            @Html.LabelFor(model => model.UserName)
+            @Html.LabelFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            <div class="submit-holder">
+                <br />
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Delete" />
+            </div>
+        }
+    </div>
+</div>

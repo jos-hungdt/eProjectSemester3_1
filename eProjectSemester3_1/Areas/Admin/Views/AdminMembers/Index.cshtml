@@ -1,0 +1,57 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminMembersViewModel
+@{
+    ViewBag.Title = "Manage Members";
+}
+
+@Html.Partial("_MembersNavButtons")
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>Account</th>
+                            <th style="width:150px">Create Date</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListUsers)
+                        {
+                        <tr>
+                            <td>
+                                @if (User.Identity.Name != it.UserName && it.UserName != AppConstants.AdminUserName && (User.Identity.Name == AppConstants.AdminUserName || !it.Roles.Where(x => x.RoleName == AppConstants.AdminRoleName).Any() ) )
+                                {
+                                    <span>
+                                        <a href="@Url.Action("Edit", new { id = it.UserName })" class="btn-mvc">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </span>
+                                }
+                            </td>
+                            <td>@it.UserName</td>
+                            <td>@it.CreateDate.ToString("hh:mm dd/MM/yyyy")</td>
+                            <td>
+                                @if (User.Identity.Name != it.UserName && it.UserName != AppConstants.AdminUserName && (User.Identity.Name == AppConstants.AdminUserName || !it.Roles.Where(x => x.RoleName == AppConstants.AdminRoleName).Any()))
+                                {
+                                    <a href="@Url.Action("Delete", new { id = it.UserName })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

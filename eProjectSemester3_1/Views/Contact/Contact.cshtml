@@ -1,0 +1,107 @@
+﻿@model ContactViewModel
+
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb4x mrgt6x clearfix">
+            <h4 class="page-name">CONTACT US</h4>
+            <ul class="breadcrumb">
+                <li><a href="#">Pages</a></li>
+                <li class="active"><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="contact-us animated" data-delay="0" data-animation="fadeInUp">
+                    <div class="contact-guide col-md-10 no-padding mrgb3x">
+                        <p>Fill out all required fields to send a message. You have to login to your wordpress account to post any comment. Please don´t spam, thank you!</p>
+                    </div>
+                    <div class="post-form row">
+                        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                                    <div class="col-md-10">
+
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.Message, new {  @class = "form-control" , rows = "11" })
+                                        @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger",  })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="SEND MESSAGE" class="send-msg" style="color:white;" />
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            }
+
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="contact-info-rightbar animated out" data-delay="0" data-animation="fadeInUp">
+                    <div class="rightbar-heading">
+                        <h4>CONTACT INFORMATION</h4>
+                    </div>
+
+                    <ul class="contact-address clearfix">
+                        <li class="map-marker"><i class="icon-location10"></i><span>@AppHelpers.GetSetting("Address")</span></li>
+                        <li class="globe"> <i class="icon-earth"></i><span>http://www.nghean-aptech.com</span></li>
+                        <li class="phone"> <i class="fa fa-phone"></i><span>+@AppHelpers.GetSetting("Hotline")</span></li>
+                        <li class="mail-envel"><i class="icon-email4"></i><span>@AppHelpers.GetSetting("Email")</span></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

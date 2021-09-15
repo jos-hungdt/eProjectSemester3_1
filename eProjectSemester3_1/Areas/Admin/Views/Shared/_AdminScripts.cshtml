@@ -1,0 +1,33 @@
+﻿@Styles.Render("~/Content/admin/Imports.css")
+@Styles.Render("~/Content/bootstrap/bootstrap.css")
+@Styles.Render("~/Content/fancybox/jquery.fancybox.css")
+@Styles.Render("~/Content/admin/sb-admin.css")
+@Styles.Render("~/Content/admin/Admin.css")
+@Styles.Render("~/Scripts/fileman/css/FileManage.css")
+<!--<link href="/css/bootstrap-responsive.css" rel="stylesheet">-->
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+@Scripts.Render("~/Content/jquery/jquery-3.1.0.min.js")
+@Scripts.Render("~/Content/jquery/jquery.unobtrusive-ajax.js")
+@Scripts.Render("~/Content/bootstrap/bootstrap.min.js")
+@Scripts.Render("~/Content/fancybox/jquery.fancybox.js")
+@Scripts.Render("~/Content/pushy/pushy.js")
+@Scripts.Render("~/Content/jquery/jquery.validate.min.js")
+@Scripts.Render("~/Content/jquery/jquery.validate.unobtrusive.min.js")
+@Scripts.Render("~/Content/admin/admin.js")
+@Scripts.Render("~/Content/ckeditor/ckeditor.js")
+@Scripts.Render("~/Content/ckfinder/ckfinder.js")
+@Scripts.Render("~/Scripts/fileman/js/FileManage.js")
+
+<script>
+    function ButtonInjectChooseImage(id, img) {
+        var url = "/FileManager?integration=buttoninject&output=" + encodeURI(id);
+        if (img && img != "") {
+            url += "&imgshow=" + encodeURI(img);
+        }
+
+        window.open(url, "MsgWindow", "width=830,height=600");
+    }
+</script>

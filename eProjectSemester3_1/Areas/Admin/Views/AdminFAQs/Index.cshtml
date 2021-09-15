@@ -1,0 +1,44 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminFaqsViewModel
+@{
+    ViewBag.Title = "Manage Faqs";
+}
+@Html.Partial("_FaqsNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        <div id="container">
+            <div class="tablescroll">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th style="width:50px">Edit</th>
+                            <th>Question</th>
+                            <th style="width:50px">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var it in Model.ListFaqs)
+                        {
+                            <tr>
+                                <td>
+                                    <a href="@Url.Action("Edit", new { id = it.faqID })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </td>
+                                <td>@it.question</td>
+                                <td>
+                                    <a href="@Url.Action("Delete", new { id = it.faqID })" class="btn-mvc">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

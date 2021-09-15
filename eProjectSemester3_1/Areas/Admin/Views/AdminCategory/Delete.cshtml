@@ -1,0 +1,31 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminCategoryDeleteViewModel
+@{
+    ViewBag.Title = "Delete Category";
+}
+@Html.Partial("_CategoryNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("Delete", "AdminCategory", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id);
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name)
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+            <div class="submit-holder">
+                <br />
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Delete" />
+            </div>
+        }
+    </div>
+</div>
+<h3 style="color:red">Are you sure wanna delete this category?<br /> Delete this category will delete all posts relationship with it.</h3>
+

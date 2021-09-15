@@ -1,0 +1,53 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminMembersCreateViewModel
+<div class="form-group">
+    @Html.LabelFor(model => model.UserName)
+    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.UserName)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Password)
+    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Password)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.RePassword)
+    @Html.PasswordFor(model => model.RePassword, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.RePassword)
+</div>
+<hr />
+<div class="form-group">
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.Email)
+</div>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th style="width:50px">Check</th>
+            <th>Role Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var it in Model.AllRoles)
+        {
+            <tr>
+                <td>
+                    @if (User.Identity.Name == AppConstants.AdminUserName || it.RoleName != AppConstants.AdminRoleName)
+                    {
+                        if (Model.RolesId != null)
+                        {
+                            <input type="checkbox" value="@it.Id" name="RolesId[]" @(Model.RolesId.IndexOf(it.Id) >= 0 ? " checked=\"checked\"" : "") />
+                        }
+                        else
+                        {
+                            <input type="checkbox" value="@it.Id" name="RolesId[]" />
+                        }
+                    }
+                </td>
+                <td>@it.RoleName</td>
+            </tr>
+        }
+    </tbody>
+</table>

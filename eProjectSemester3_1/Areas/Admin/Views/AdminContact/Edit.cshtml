@@ -1,0 +1,60 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminEditContactViewModel
+@{
+    ViewBag.Title = "Edit Contact";
+}
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("Edit", "AdminContact", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id);
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name)
+                <input type="text" value="@Model.Name" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone)
+                <input type="text" value="@Model.Phone" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email)
+                <input type="text" value="@Model.Email" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Address)
+                <input type="text" value="@Model.Address" class="form-control" readonly="readonly" />
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Message)
+                <textarea class="form-control" readonly="readonly">@Model.Message</textarea>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status)
+                <select id="Status" name="Status" class="form-control">
+                    <option value="0" @(Model.Status == 0?"selected=\"selected\"":"")>Preprocessor</option>
+                    <option value="1" @(Model.Status == 1?"selected=\"selected\"":"")>Processing</option>
+                    <option value="2" @(Model.Status == 2?"selected=\"selected\"":"")>Completed</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Note)
+                @Html.TextAreaFor(model => model.Note)
+                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                <script>
+                    CKEDITOR.replace("Note");
+                </script>
+            </div>
+
+            <div class="submit-holder">
+                <br />
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Update" />
+            </div>
+        }
+    </div>
+</div>

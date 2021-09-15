@@ -1,0 +1,25 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminMembersCreateViewModel
+@{
+    ViewBag.Title = "Create Account";
+}
+
+@Html.Partial("_MembersNavButtons")
+
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("Create", "AdminMembers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+
+            @Html.Partial("_MembersFields", Model)
+
+            <div class="submit-holder">
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Create" />
+            </div>
+        }
+    </div>
+</div>

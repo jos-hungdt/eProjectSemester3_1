@@ -1,0 +1,291 @@
+﻿@model eProjectSemester3_1.Application.Entities.Estate
+
+@{
+    ViewBag.Title =  Html.DisplayFor(model => model.realEstateTitle );
+}
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb6x mrgt6x clearfix">
+            <h4 class="page-name">PROPERTY DETAILS</h4>
+            <ul class="breadcrumb">
+                <li><a href="#">Pages</a></li>
+                <li class="active"><a href="#">@Html.DisplayFor(model => model.realEstateTitle)</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 property-single-rightbar">
+            <div class="property-single">
+                <div class="sync1 property-carousel owl-carousel">
+                    <div class="item">
+                        <div class="property-single-img">
+                            <img src="@Html.DisplayFor(model => model.realEstateImage)" class="img-responsive" width="100%" alt="#" />
+                            <div class="image-detail">
+                                <h5 class="place-name">@Html.DisplayFor(model => model.realEstateTitle)</h5>
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                <div class="place-price"><span>@Html.DisplayFor(model => model.Price)<sup></sup></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="property-single-img">
+                            <img src="@Html.DisplayFor(model => model.realEstateImage2)" class="img-responsive" width="100%" alt="#" />
+                            <div class="image-detail">
+                                <h5 class="place-name">@Html.DisplayFor(model => model.realEstateTitle)</h5>
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                <div class="place-price"><span>@Html.DisplayFor(model => model.Price)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="property-single-img">
+                            <img src="@Html.DisplayFor(model => model.realEstateImage3)" class="img-responsive" width="100%" alt="#" />
+                            <div class="image-detail">
+                                <h5 class="place-name">@Html.DisplayFor(model => model.realEstateTitle)</h5>
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                <div class="place-price"><span>@Html.DisplayFor(model => model.Price)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="property-single-img">
+                            <img src="@Html.DisplayFor(model => model.realEstateImage4)" class="img-responsive" width="100%" alt="#" />
+                            <div class="image-detail">
+                                <h5 class="place-name">@Html.DisplayFor(model => model.realEstateTitle)</h5>
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                <div class="place-price"><span>@Html.DisplayFor(model => model.Price)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="property-single-img">
+                            <img src="@Html.DisplayFor(model => model.realEstateImage5)" class="img-responsive" width="100%" alt="#" />
+                            <div class="image-detail">
+                                <h5 class="place-name">@Html.DisplayFor(model => model.realEstateTitle)</h5>
+                                <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                                <div class="place-price"><span>@Html.DisplayFor(model => model.Price)</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sync2 property-carousel owl-carousel">
+                    <div class="item"> <img src="@Html.Raw(Model.realEstateImage)" class="img-slider-product" alt="#" /> </div>
+                    <div class="item"> <img src="@Html.Raw(Model.realEstateImage2)" class="img-slider-product" alt="#" /> </div>
+                    <div class="item"> <img src="@Html.Raw(Model.realEstateImage3)" class="img-slider-product" alt="#" /> </div>
+                    <div class="item"> <img src="@Html.Raw(Model.realEstateImage4)" class="img-slider-product" alt="#" /> </div>
+                    <div class="item"> <img src="@Html.Raw(Model.realEstateImage5)" class="img-slider-product" alt="#" /> </div>
+                </div>
+            </div>
+            <div class="property-description mrgt5x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="property-heading">
+                    <h4><span>PROPERTY DESCRIPTION</span></h4>
+                </div>
+                <ul class="description-content col-md-4">
+                    <li><span class="description-title">Location </span><span class="title-detail">@Html.DisplayFor(model => model.Street), @Html.DisplayFor(model => model.City)</span></li>
+                    <li><span class="description-title">Price</span><span class="title-detail">@Html.DisplayFor(model => model.Price)</span></li>
+                    <li><span class="description-title">Type </span><span class="title-detail">@Html.DisplayFor(model => model.EstateStyle.realEstateStyleName)</span></li>
+                    <li><span class="description-title">Status </span><span class="title-detail">@Html.DisplayFor(model => model.EstateType.realStateTypeName)</span></li>
+                    <li><span class="description-title">Size </span><span class="title-detail">@Html.DisplayFor(model => model.Area)</span></li>
+                    <li><span class="description-title">Beds</span><span class="title-detail">@Html.DisplayFor(model => model.NoOfBedrooms)</span></li>
+                    <li><span class="description-title">Baths </span><span class="title-detail">@Html.DisplayFor(model => model.NoOfBathrooms)</span></li>
+                </ul>
+                <div class="description-text col-md-8">
+                    <h5>Descriptipon</h5>
+                    <p>@Html.Raw(Model.Description)</p>
+                </div>
+            </div>
+            @*<div class="property-features mrgt6x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="property-heading">
+                    <h4><span>PROPERTY FEATURES</span></h4>
+                </div>
+                <ul class="features-name page-2">
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>swimming pool</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>garden</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>playhouse</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>beach house</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>sauna in house</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>beach side / view</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>barbecue grill</span></li>
+                    <li class="col-md-3 no-padding"><i class="fa fa-check"></i><span>2 boats</span></li>
+                </ul>
+            </div>*@
+            @*<div class="find-location mrgt7x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="property-heading">
+                    <h4><span>FIND THE LOCATION</span></h4>
+                </div>
+                <div class="map">
+                    <div id="map-street"></div>
+                </div>
+            </div>*@
+            
+            
+            <div class="related-properties mrgt7x clearfix">
+                <div class="property-heading mrgb4x">
+                    <h4><span>RELATED PROPERTIES</span></h4>
+                </div>
+
+               @foreach (var i in AppHelpers.Related(Model.EstateType.realStateTypeID,Model.City))
+                { <div class="property-box border-hover col-md-4 animated out" data-delay="0" data-animation="fadeInUp">
+                    <div class="appartment-img">
+                        <img src="@i.realEstateImage" class="img-product" alt="" />
+                    </div>
+                    <div class="property-text">
+                        <div class="appartment-name">
+                            <h4>  @Html.ActionLink(i.realEstateTitle, "Index", "Estate", new { id = i.RealEstateID })</h4>
+                            
+                            <p>@i.Teaser</p>
+                        </div>
+                        <div class="property-price">
+                            <h1><span><sup>$</sup>@i.Price</span></h1>
+                        </div>
+                        <ul class="appartment-detail">
+                            <li>@i.NoOfBedrooms Baths</li>
+                            <li>@i.NoOfBedrooms Beds</li>
+                            <li>@i.Area (m<sup>2</sup>)</li>
+                        </ul>
+                    </div>
+                </div>
+                }
+                
+                
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="right-side-bar">
+
+                @using (Html.BeginForm("Index", "Search", FormMethod.Get, new { role = "search", id = "search-form" }))
+                {
+                    <div class="choose-prefernce animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="rightbar-heading mrgb3x">
+                            <h4>CHOOSE PREFERENCES</h4>
+                        </div>
+                        <div class="search-property mrgb5x clearfix">
+                            <form id="property-search" name="propertysearch" method="post">
+                                <div class="select-box">
+                                    <select class="form-control" name="type">
+                                        <option value="type">PROPERTY TYPE</option>
+                                        @foreach (var i in AppHelpers.GetEstateType())
+                                        {
+                                            <option value="@i.realStateTypeID">@i.realStateTypeName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="select-box">
+                                    <select class="form-control" name="style">
+                                        <option value="status">PROPERTY STYLE</option>
+                                        @foreach (var i in AppHelpers.GetEstateStyle())
+                                        {
+                                            <option value="@i.realEstateStyleID">@i.realEstateStyleName</option>
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="select-box">
+                                    <select class="form-control" name="bed">
+                                        <option value="number">NUMBER OF BEDROOMS</option>
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="1">5</option>
+                                        <option value="1">6</option>
+
+
+                                    </select>
+                                </div>
+                                <div class="select-box">
+                                    <select class="form-control" name="bath">
+                                        <option value="number">NUMBER OF BATHROOMS</option>
+                                        <option value="1">1</option>
+                                        <option value="1">2</option>
+                                        <option value="1">3</option>
+                                        <option value="1">4</option>
+                                        <option value="1">5</option>
+                                        <option value="1">6</option>
+                                    </select>
+                                </div>
+
+                                <div class="checkbox">
+
+                                    <div class="search-btn"><button class="search-btn" type="submit">SEARCH FOR IT</button> </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                }
+                @*<div class="acco-type animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="rightbar-heading mrgb3x">
+                <h4>ACCOMODATION TYPE</h4>
+            </div>
+            <ul class="accomodation">
+                @foreach (var i in AppHelpers.GetEstateStyle())
+                {
+                    <li class="checkbox" style="text-transform:uppercase;">
+                        <label>
+
+                            <span class="bg-checkbox"></span> <span>@i.realEstateStyleName</span>
+                        </label>
+                    </li>
+                }
+
+
+            </ul>
+        </div>*@
+                <div class="rightbar-heading mrgb3x">
+                    <h4>HOT PROPERTIES</h4>
+                </div>
+
+                @foreach (var i in AppHelpers.vip_estate().Take(3))
+                {
+                    var label = "Sale";
+                    if (i.EstateType.realStateTypeID == 2)
+                    { label = "Rent"; }
+                    // Phân loại label search is rent or sale
+                    <div class="property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="appartment-img">
+                            <img src="@i.realEstateImage" class="img-responsive" alt="#" />
+                            <div class="detail-btn"> <a href="#" class="@label">FOR @label</a> </div>
+                        </div>
+                        <div class="property-text">
+                            <div class="appartment-name">
+                                <h4><a href="@Url.Action("Index", "Estate", new {id = i.RealEstateID})">@i.realEstateTitle</a></h4>
+                                <p>@i.Teaser </p>
+                            </div>
+                            <div class="property-price">
+                                <h1><span><sup>$</sup>@i.Price</span></h1>
+                            </div>
+                            <ul class="appartment-detail">
+                                <li>@i.NoOfBathrooms Baths</li>
+                                <li>@i.NoOfBedrooms Beds</li>
+                                <li>@i.Area</li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+                @*<div class="twitter-feed mrgt6x mrgb6x animated out" data-delay="0" data-animation="fadeInUp">
+
+                    <div class="follow-on mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="rightbar-heading mrgb3x">
+                            <h4>FOLLOW US ON</h4>
+                        </div>
+                        <ul class="sidebar-social-media">
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="dribble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="vimeo"><a href="#"><i class="icon-vimeo"></i></a></li>
+                            <li class="google"><a href="#"><i class="fa fa-google"></i></a></li>
+                            <li class="deviantart"><a href="#"><i class="icon-deviantart3"></i></a></li>
+                            <li class="pinterest"><a href="#"><i class="icon-pinterest-p"></i></a></li>
+                            <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+

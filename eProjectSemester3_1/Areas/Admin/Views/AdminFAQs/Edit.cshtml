@@ -1,0 +1,25 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminFaqsEditViewModel
+@{
+    ViewBag.Title = "Change info account";
+}
+@Html.Partial("_FaqsNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("Edit", "AdminMembers", FormMethod.Post))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x=> x.Id)
+
+            @Html.Partial("_FaqsFields", Model)
+
+            <div class="submit-holder">
+                <br />
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Update" />
+            </div>
+        }
+    </div>
+</div>

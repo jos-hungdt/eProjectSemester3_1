@@ -1,0 +1,59 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminPageingViewModel
+@{
+    var url = Request.Path + "?";
+
+    foreach (string key in Request.QueryString.AllKeys)
+    {
+        if (key != "p")
+        {
+            url = string.Concat(url, key, "=", HttpUtility.UrlEncode((string)Request.QueryString[key]), "&");
+        }
+
+    }
+
+    url += "p=";
+
+    int pl = Model.Page - 5;
+    if (pl < 2)
+    {
+        pl = 2;
+    }
+}
+<div class="pagination-container">
+    <ul class="pagination">
+
+        @if (Model.Page > 1)
+        {
+            <li class="active">
+                <a href="@(url + (Model.Page-1))">Back</a>
+            </li>
+            <li class="active">
+                <a href="@(url + 1)">1</a>
+            </li>
+        }
+        @for (var i = pl; i < Model.Page; i++)
+        {
+            <li class="active">
+                <a href="@(url + i)">@i</a>
+            </li>
+        }
+        <li class="active">
+            <a href="@(url + Model.Page)" class="current">@Model.Page</a>
+        </li>
+        @for (var i = Model.Page + 1; i < (Model.MaxPage - 1) && i < Model.Page + 5; i++)
+        {
+            <li class="active">
+                <a href="@(url + i)">@i</a>
+            </li>
+        }
+        @if (Model.Page < Model.MaxPage)
+        {
+            <li class="active">
+                <a href="@(url + Model.MaxPage)">@Model.MaxPage</a>
+                </li>
+            <li class="active">
+                <a href="@(url + (Model.Page+1))">Next</a>
+                </li>
+                }
+</ul>
+</div><!--paging-->

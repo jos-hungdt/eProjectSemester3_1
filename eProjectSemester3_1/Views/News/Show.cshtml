@@ -1,0 +1,108 @@
+﻿@model eProjectSemester3_1.ViewModels.NewsShowViewModel
+@{
+    ViewBag.Title = Model.News.Title;
+}
+<section class="border-top">
+    <div class="container">
+        <div class="page-title mrgb3x mrgt6x clearfix">
+            <h4 class="page-name">@Model.News.Title</h4>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-9 blog-singlepost"  style="text-align:justify">
+            <div class="blog-section mrgb9x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+                <div class="blogsingle-img"> <img src="@Html.Raw(Model.News.Image)" width="100%" class="img-responsive" alt="#" /> </div>
+                <div class="blog-text">
+                    <span>POSTED ON @Model.News.CreateDate</span>
+                    <h4>@Model.News.ShortContent</h4>
+                    <span class="post-detail" style="text-transform:uppercase">BY: @Model.News.UserPost.UserName  / CATEGORY:</span>
+                    <p>
+                        @Html.Raw(Model.Post.Content)
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="right-side-bar">
+                <div class="search-for animated out" data-delay="0" data-animation="fadeInUp">
+                    <div class="rightbar-heading mrgb3x">
+                        <h4>SEARCH</h4>
+                    </div>
+                    <div class="widget search">
+                        @using (Html.BeginForm("NewsSearch", "Home", FormMethod.Get, new { role = "search", id = "news-search" }))
+                        {
+                            <form method="post" action="#">
+                                <input type="text" class="form-control" name="n" placeholder="search for something">
+                                <input type="submit" value="submit">
+                            </form>
+                        }
+                    </div>
+                </div>
+                @*<div class="tags mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="rightbar-heading mrgb3x">
+                <h4>POPULAR TAGS</h4>
+            </div>
+            <ul class="tag-btn">
+
+                @foreach (var i in AppHelpers.GetCategories())
+                {
+                    <li><a href="@Url.Action("Category","News",new {id = i.Id })"><span>@i.Name</span></a></li>
+                }
+            </ul>
+        </div>*@
+                <div class="blog-post mrgt6x animated out" data-delay="0" data-animation="fadeInUp">
+                    <div class="rightbar-heading mrgb3x">
+                        <h4>IN THE @Model.News.Category.Name</h4>
+                    </div>
+                    @foreach (var i in AppHelpers.GetRelatedNews(Model.News.Category.Id).Take(4))
+                    {
+                        if (i.Id != Model.News.Id)
+                        {
+                            <div class="post-area">
+                                <h5><a href="@Url.Action("Show","News",new { id=i.Id })">@i.Title</h5>
+                                <span class="best-place">POSTED ON @i.CreateDate</span>
+                            </div>
+                        }
+
+                    }
+                </div>
+                <div class="rightbar-heading mrgb3x">
+                    <h4>HOT PROPERTIES</h4>
+                </div>
+
+                @foreach (var i in AppHelpers.vip_estate().Take(5))
+                {
+                    var label = "Sale";
+                    if (i.EstateType.realStateTypeID == 2)
+                    { label = "Rent"; }
+                    // Phân loại label search is rent or sale
+                    <div class="property-box border-hover animated out" data-delay="0" data-animation="fadeInUp">
+                        <div class="appartment-img">
+                            <img src="@i.realEstateImage" class="img-responsive" alt="#" />
+                            <div class="detail-btn"> <a href="#" class="@label">FOR @label</a> </div>
+                        </div>
+                        <div class="property-text">
+                            <div class="appartment-name">
+                                <h4><a href="@Url.Action("Index", "Estate", new {id = i.RealEstateID})">@i.realEstateTitle</a></h4>
+                                <p>@i.Teaser </p>
+                            </div>
+                            <div class="property-price">
+                                <h1><span><sup>$</sup>@i.Price</span></h1>
+                            </div>
+                            <ul class="appartment-detail">
+                                <li>@i.NoOfBathrooms Baths</li>
+                                <li>@i.NoOfBedrooms Beds</li>
+                                <li>@i.Area</li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

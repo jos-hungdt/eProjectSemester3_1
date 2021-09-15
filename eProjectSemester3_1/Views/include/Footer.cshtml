@@ -1,0 +1,47 @@
+﻿<footer class="bg-color">
+    <div class="container">
+        <div class="upper-footer clearfix">
+            <div class="widgets">
+                <div class="col-md-3">
+                    <div class="about-widget">
+                        <img src="~/Content/images/footer-logo.png" class="img-responsive" alt="#" />
+                        <p>@AppHelpers.GetSetting("Description")</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget-heading mrgb4x">
+                        <h4>LATEST NEWS</h4>
+                    </div>
+                    <ul class="widget-area service-list">
+                    @foreach (var i in AppHelpers.GetNews())
+                    {
+                        <li><a href="@Url.Action("Show","News" ,new { id = i.Id})"><i class="fa fa-play-circle"></i><span>@i.Title</span></a></li>
+                    }
+                    </ul>
+                </div>
+                @*<div class="col-md-3">
+                    <div class="widget-heading mrgb4x ">
+                        <h4>TWITTER FEED</h4>
+                    </div>
+                    <ul class="widget-area tweet">
+                        <li><a href="#"><i class="fa fa-twitter"></i><span>  Creating a new theme for the real estate section</span> <span class="active-time"># 2 hours ago</span></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i><span> We create awesome PSD templates for multi-pupose</span> <span class="active-time"># 8 hours ago</span></a></li>
+                    </ul>
+                </div>*@
+                <div class="col-md-3">
+                    <div class="widget-heading mrgb4x ">
+                        <h4>GET IN TOUCH WITH US</h4>
+                    </div>
+                    <ul class="widget-area contact clearfix">
+                        <li> <a href="#"><i class="icon-location10"></i><span>@AppHelpers.GetSetting("Address")</span></a></li>
+                        <li> <a href="#"><i class="icon-earth"></i><span class="link-style">http://www.nghean-aptech.com</span></a></li>
+                        <li> <a href="#"><i class="fa fa-phone"></i><span>+@AppHelpers.GetSetting("Hotline")</span></a></li>
+                        <li> <a href="#"><i class="icon-email4"></i><span>@AppHelpers.GetSetting("Email")</span></a></li>
+                    </ul>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>

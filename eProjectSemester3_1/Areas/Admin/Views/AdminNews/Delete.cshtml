@@ -1,0 +1,30 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminNewsDeleteViewModel
+@{
+    ViewBag.Title = "Delete News";
+}
+@Html.Partial("_MewsNavButtons")
+<div class="panel">
+    <div class="panel-heading">
+        <h5>@ViewBag.Title</h5>
+    </div>
+    <div class="panel-content">
+        @using (Html.BeginForm("Delete", "AdminNews", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(false)
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id);
+
+            <h3 style="color:red">Are you sure wanna delete this post?</h3>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title)
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="submit-holder">
+                <br />
+                <input type="submit" class="btn-mvc-green btn-mvc-large" value="Delete" />
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,80 @@
+﻿@(!User.Identity.IsAuthenticated? Html.Partial("Login1"):null )
+<div class="top-bar">
+    <div class="container">
+        <div class="left-bar">
+            <ul class="social-media">
+                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li class="dribble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li class="vimeo"><a href="#"><i class="icon-vimeo"></i></a></li>
+                <li class="google"><a href="#"><i class="fa fa-google"></i></a></li>
+                <li class="deviantart"><a href="#"><i class="icon-deviantart3"></i></a></li>
+                <li class="pinterest"><a href="#"><i class="icon-pinterest-p"></i></a></li>
+                <li class="instagram"><a href="#"><i class="fa fa-instagram"></i></a></li>
+            </ul>
+        </div>
+        <div class="right-bar">
+            <ul class="contact">
+                <li><i class="fa fa-phone"></i></li>
+                <li><span>Call us</span></li>
+                <li class="contact-info"><a href="#">+@AppHelpers.GetSetting("Hotline")</a></li>
+            </ul>
+            <ul class="mail">
+                <li><i class="icon-email4"></i></li>
+                <li><span>Send email</span></li>
+                <li class="contact-info"><a href="mailto:@AppHelpers.GetSetting("Email")">+@AppHelpers.GetSetting("Email")</a></li>
+            </ul>
+            <ul class="login">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <li><i class="icon-login"></i></li>
+                    <li><span class="btn" data-toggle="modal" data-target="#myModal">Login</span> || <a href="@Url.Action("Register","Members")"><span> Register</span></a></li>
+                }
+                else
+                {
+                    @Html.Action("SidePanel", "Members")
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<header>
+    <div class="container">
+        <div class="navigation clearfix">
+            <div class="logo"><a href="/Home"><img src="~/Content/images/logo-img.jpg" width="201" alt="#" /> </a></div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar first"></span> <span class="icon-bar middle"></span> <span class="icon-bar last"></span> </button>
+            </div>
+            <div class="menu">
+                <nav class="navbar navbar-default">
+                    <div id="navbar" class="navbar-collapse collapse pull-right">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a aria-expanded="true" role="button" class="dropdown-toggle" href="/Home">HOME</a>
+
+                            </li>
+                            <li><a href="/Home/Seller">SELLERS</a></li>
+                            <li>
+                                <a aria-expanded="true" role="button" href="/Estate/properties">PROPERTIES</a>
+
+                            </li>
+                            <li>
+                                <a aria-expanded="true" role="button" class="dropdown-toggle" href="/News">NEWS</a>
+
+                            </li>
+
+                            <li>
+                                <a aria-expanded="true" role="button" href="/Contact/">CONTACT US</a>
+
+                            </li>
+                            <li>
+                                <a aria-expanded="true" role="button" href="/Home/FAQs">FAQs</a>
+
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

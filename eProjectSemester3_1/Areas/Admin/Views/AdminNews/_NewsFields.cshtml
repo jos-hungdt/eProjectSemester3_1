@@ -1,0 +1,27 @@
+﻿@model eProjectSemester3_1.Areas.Admin.ViewModels.AdminNewsCreateEditViewModel
+<div class="form-group">
+    @Html.LabelFor(model => model.Title)
+    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Category)
+        @Html.DropDownListFor(model => model.Category, Model.AllCategory, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Image)
+    @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+    <script>
+        FileManage.replace("Image", { Muti: false }); // chỉ chập nhận chọn 1 ảnh
+    </script>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => model.Content)
+    @Html.TextAreaFor(model => model.Content)
+    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+    <script>
+            CKEDITOR.replace("Content");
+    </script>
+</div>
